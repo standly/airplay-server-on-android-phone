@@ -1,0 +1,25 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+        //mavenCentral()
+
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.1.1'
+        //classpath 'org.jboss.netty:netty:3.2.4.Final'
+        //classpath 'javax.jmdns:jmdns:3.4.0'
+        //classpath 'org.bouncycastle:bcprov-ext-jdk16:1.46'
+        //classpath 'net.iharder:base64:2.3.8'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        //mavenCentral()
+    }
+}
