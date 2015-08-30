@@ -70,6 +70,8 @@ public class AirPlayServer implements Runnable {
 		}
 		return instance;
 	}
+
+	public boolean isOn = false;
 	
 	/**
 	 * Global executor service. Used e.g. to initialize the various netty channel factories 
@@ -156,7 +158,7 @@ public class AirPlayServer implements Runnable {
         
         String hostName = networkUtils.getHostUtils();
 		String hardwareAddressString = networkUtils.getHardwareAddressString();
-        
+        isOn = true;
 		try {
 	    	/* Create mDNS responders. */
 	        synchronized(jmDNSInstances) {
@@ -198,7 +200,7 @@ public class AirPlayServer implements Runnable {
 		    		}
 		    	}
 	        }
-	        
+
 		} 
 		catch (SocketException e) {
 			LOG.log(Level.SEVERE, "Failed register mDNS services", e);
@@ -232,6 +234,7 @@ public class AirPlayServer implements Runnable {
 
 		/* Release the OrderedMemoryAwareThreadPoolExecutor */
 		channelExecutionHandler.releaseExternalResources();
+		isOn = false;
 		
 	}
 

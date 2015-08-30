@@ -182,7 +182,7 @@ public class AudioOutputQueue implements AudioClock {
 		bytesPerFrame = streamInfoProvider.getChannels() * streamInfoProvider.getSampleSizeInBits() / 8;
 		
 		//calculate the buffer size in bytes
-		bufferSizeInBytes = (int)Math.pow(2, Math.ceil(Math.log(BUFFER_SIZE_SECONDS * sampleRate * bytesPerFrame) / Math.log(2.0)));
+		bufferSizeInBytes = (int)Math.pow(2, Math.ceil(Math.log(BUFFER_SIZE_SECONDS * sampleRate * bytesPerFrame) / Math.log(2.0)))*2;
 		
 		mode = AudioTrack.MODE_STREAM;
 		
@@ -572,7 +572,7 @@ public class AudioOutputQueue implements AudioClock {
 	 */
 	public synchronized boolean enqueue(final long frameTime, final byte[] frames) {
 		/* Playback time of packet */
-		final double packetSeconds = (double)frames.length / (double)(bytesPerFrame * sampleRate);
+		final double packetSeconds = (double)frames.length / (double)(bytesPerFrame * sampleRate)*2;
 		
 		/* Compute playback delay, i.e., the difference between the last sample's
 		 * playback time and the current line time
@@ -585,10 +585,10 @@ public class AudioOutputQueue implements AudioClock {
 		
 		LOG.info(" delay: " + delay );
 		
-		if (delay < -packetSeconds) {
+		if (delay < -packetSeconds) {//pass this branch ,it cause the audio on and off
 			/* The whole packet is scheduled to be played in the past */
 			LOG.warning("Audio data arrived " + -(delay) + " seconds too late, dropping");
-			return false;
+			//return false;
 		}
 		else if (delay > QUEUE_LENGHT_MAX_SECONDS) {
 			/* The packet extends further into the future that our maximum queue size.

@@ -49,7 +49,7 @@ public class MainActivity extends Activity
     public void startAirplay(View view)
     {
         String msg = "bug occur!";
-        if(isOnAir)
+        if(isOnAir && AirPlayServer.getIstance().isOn)
         {
             msg = "airplay already on!";
         }
