@@ -1,1 +1,1 @@
-include ':app', ':airdroidlib', ':phlo', ':alacdecoder'
+include ':app', ':alacdecoder', ':Airplaylib'

@@ -26,5 +26,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="netty-3.2.4.Final" level="project" />
+    <orderEntry type="library" exported="" name="jmdns-3.4.0" level="project" />
+    <orderEntry type="library" exported="" name="bcprov-ext-jdk16-1.46" level="project" />
+    <orderEntry type="library" exported="" name="base64-2.3.8" level="project" />
   </component>
 </module>

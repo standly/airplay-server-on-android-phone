@@ -9,10 +9,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/airdroidlib" />
+            <option value="$PROJECT_DIR$/Airplaylib" />
             <option value="$PROJECT_DIR$/alacdecoder" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/phlo" />
           </set>
         </option>
       </GradleProjectSettings>

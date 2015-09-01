@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Airplaylib/Airplaylib.iml" filepath="$PROJECT_DIR$/Airplaylib/Airplaylib.iml" />
       <module fileurl="file://$PROJECT_DIR$/DroidAirplay.iml" filepath="$PROJECT_DIR$/DroidAirplay.iml" />
-      <module fileurl="file://$PROJECT_DIR$/airdroidlib/airdroidlib.iml" filepath="$PROJECT_DIR$/airdroidlib/airdroidlib.iml" />
       <module fileurl="file://$PROJECT_DIR$/alacdecoder/alacdecoder.iml" filepath="$PROJECT_DIR$/alacdecoder/alacdecoder.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/phlo/phlo.iml" filepath="$PROJECT_DIR$/phlo/phlo.iml" />
     </modules>
   </component>
 </project>
