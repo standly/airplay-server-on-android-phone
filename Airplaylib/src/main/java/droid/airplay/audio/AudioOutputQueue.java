@@ -156,14 +156,14 @@ public class AudioOutputQueue implements AudioClock {
 		packetSizeFrames = streamInfoProvider.getFramesPerPacket();
 		bytesPerFrame = streamInfoProvider.getChannels() * streamInfoProvider.getSampleSizeInBits() / 8;
 		
-		//calculate the buffer size in bytes
-		bufferSizeInBytes = (int)Math.pow(2, Math.ceil(Math.log(BUFFER_SIZE_SECONDS * sampleRate * bytesPerFrame) / Math.log(2.0)));
+		//calculate the buffer size in bytes, 4times in case of audio went on and off
+		bufferSizeInBytes = 4 * (int)Math.pow(2, Math.ceil(Math.log(BUFFER_SIZE_SECONDS * sampleRate * bytesPerFrame) / Math.log(2.0)));
 		
 		mode = AudioTrack.MODE_STREAM;
 		
 		//create the AudioTrack
 		//audioTrack = new AudioTrack(streamType, sampleRateInHz, channelConfig, audioFormat, bufferSizeInBytes, mode);
-		audioTrack = new AudioTrack(streamType, sampleRateInHz, AudioFormat.CHANNEL_CONFIGURATION_STEREO, audioFormat, bufferSizeInBytes, mode);//FIXME
+		audioTrack = new AudioTrack(streamType, sampleRateInHz, AudioFormat.CHANNEL_OUT_STEREO, audioFormat, bufferSizeInBytes, mode);//FIXME
 
 		LOG.info("AudioTrack created succesfully with a buffer of : " + bufferSizeInBytes + " bytes and : " + bufferSizeInBytes / bytesPerFrame + " frames.");
 			
@@ -547,7 +547,7 @@ public class AudioOutputQueue implements AudioClock {
 	 */
 	public synchronized boolean enqueue(final long frameTime, final byte[] frames) {
 		/* Playback time of packet */
-		final double packetSeconds = (double)frames.length / (double)(bytesPerFrame * sampleRate)*2;
+		final double packetSeconds = (double)frames.length / (double)(bytesPerFrame * sampleRate);
 		
 		/* Compute playback delay, i.e., the difference between the last sample's
 		 * playback time and the current line time
